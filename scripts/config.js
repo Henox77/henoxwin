@@ -5,7 +5,7 @@ const CONFIG = {
     socials: {
         r10: "https://www.r10.net/profil/205411-henoxdev.html",
         github: "https://github.com/Henox77",
-        instagram: "https://instagram.com/efe77",
+        instagram: "https://instagram.com/efeyylw",
         discord: "",
         discordUserId: "1462496241693753558"
     },
