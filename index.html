@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <style> 
+        body {
+            background-color: black;
+        }
+        .menu-header-text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            margin-left: 10px;
+        }
+        .profile-name {
+            font-weight: bold;
+            font-size: 16px;
+        }
+        .discord-status-text {
+            font-size: 11px;
+            font-weight: normal;
+            color: #d8ebff;
+            text-shadow: none;
+            margin-top: 3px;
+            max-width: 320px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .user-icon-border {
+            border: 2px solid #747f8d;
+            transition: border-color 0.3s ease;
+        }
+    </style>
+    <link rel="icon" href="media/favicon.png">
+    <link rel="preload" href="media/background-hills-day.gif" as="image">
+    <link rel="preload" href="media/background-hills-night.gif" as="image">
+    <link rel="stylesheet" href="default.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henox</title>
+    <script src="scripts/config.js"></script>
+    <script src="scripts/lanyard.js"></script>
+</head>
+<body> 
+    <div class="menu">
+        <div class="menu-header">
+            <div class="user-icon-container">
+                <div class="user-icon-border" id="user-status-border">
+                    <img src="media/user_icon.jpg" alt="User Icon" class="user-icon" id="user-avatar-img">
+                </div>
+            </div>
+            <div class="menu-header-text">
+                <div class="profile-name" id="profile-name">Henox</div>
+                <div class="discord-status-text" id="discord-status-text">Connecting...</div>
+            </div>
+            <div class="orange-divider"></div>
+        </div>
+        
+        <div class="menu-content">
+            <div class="menu-column menu-left">
+                <a href="about/" class="menu-item" id="menu-item-about">
+                    <img src="media/about_icon.png" alt="About Me Icon" class="menu-icon">
+                    <div class="menu-text">
+                        <span class="menu-short">Hakkımda</span>
+                        <span class="menu-full">Benim Hakkımda Bilgiler</span>
+                    </div>
+                </a>
+                <a href="https://github.com/" target="_blank" class="menu-item" id="menu-item-github">
+                    <img src="media/github_icon.png" alt="GitHub Icon" class="menu-icon">
+                    <div class="menu-text">
+                        <span class="menu-short">GitHub</span>
+                        <span class="menu-full">Kod Depolarım</span>
+                    </div>
+                </a>
+                <a href="https://r10.net/" target="_blank" class="menu-item" id="menu-item-r10">
+                    <img src="media/guestbook_icon.png" alt="R10 Icon" class="menu-icon">
+                    <div class="menu-text">
+                        <span class="menu-short">R10.net</span>
+                        <span class="menu-full">R10 Forum Profilim</span>
+                    </div>
+                </a>
+                <a href="https://instagram.com/" target="_blank" class="menu-item" id="menu-item-instagram">
+                    <img src="media/wip_icon.png" alt="Instagram Icon" class="menu-icon">
+                    <div class="menu-text">
+                        <span class="menu-short">Instagram</span>
+                        <span class="menu-full">Sosyal Medya Profilim</span>
+                    </div>
+                </a>
+                <a href="" class="menu-item" id="menu-item-minesweeper" onclick="openMinesweeper(); return false;">
+                    <img src="media/wip_icon.png" alt="Minesweeper Icon" class="menu-icon">
+                    <div class="menu-text">
+                        <span class="menu-short">Mayın Tarlası</span>
+                        <span class="menu-full">Klasik Windows Oyunu</span>
+                    </div>
+                </a>
+            </div>
+            <div class="menu-column menu-right">
+                <a href="" class="menu-item" id="menu-item-player" onclick="openPlayer(); return false;">
+                    <img src="media/music_player_icon.png" alt="Music Player Icon" class="menu-icon">
+                    <div class="menu-text">
+                        <span class="menu-short">Müzik Çalar</span>
+                        <span class="menu-full">Winamp Müzik Çalar</span>
+                    </div>
+                </a>
+
+                <a href="" class="menu-item" id="menu-item-background">
+                    <img src="media/background_icon.png" alt="Background Icon" class="menu-icon">
+                    <div class="menu-text">
+                        <span class="menu-short">Arka Plan</span>
+                        <span class="menu-full">Duvar Kağıdını Değiştir</span>
+                    </div>
+                </a>
+                <a href="https://discord.gg/" target="_blank" class="menu-item" id="menu-item-discord">
+                    <img src="media/discord_icon.png" alt="Discord Icon" class="menu-icon">
+                    <div class="menu-text">
+                        <span class="menu-short">Discord</span>
+                        <span class="menu-full">Sunucuma Katılın!</span>
+                    </div>
+                </a>
+                <a href="" target="_blank" class="menu-item" id="menu-item-contact">
+                    <img src="media/contact_icon.png" alt="Contact Icon" class="menu-icon">
+                    <div class="menu-text">
+                        <span class="menu-short">İletişim</span>
+                        <span class="menu-full">WhatsApp ile İletişim</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div id="notification" class="notification">
+        <div class="notification-title"></div>
+        <div class="notification-subtext"></div>
+    </div>
+</body>
+<script src="scripts/icon_handler.js"></script>
+<script src="scripts/background_changer.js"></script>
+<script src="scripts/notification.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    if (typeof CONFIG !== "undefined") {
+      const nameElem = document.getElementById("profile-name");
+      if (nameElem && CONFIG.name) {
+        nameElem.textContent = CONFIG.name;
+        document.title = CONFIG.name;
+      }
+      
+      const githubLink = document.getElementById("menu-item-github");
+      if (githubLink && CONFIG.socials.github) {
+        githubLink.href = CONFIG.socials.github;
+      } else if (githubLink) {
+        githubLink.style.display = "none";
+      }
+
+      const r10Link = document.getElementById("menu-item-r10");
+      if (r10Link && CONFIG.socials.r10) {
+        r10Link.href = CONFIG.socials.r10;
+      } else if (r10Link) {
+        r10Link.style.display = "none";
+      }
+
+      const instagramLink = document.getElementById("menu-item-instagram");
+      if (instagramLink && CONFIG.socials.instagram) {
+        instagramLink.href = CONFIG.socials.instagram;
+      } else if (instagramLink) {
+        instagramLink.style.display = "none";
+      }
+
+      const discordLink = document.getElementById("menu-item-discord");
+      if (discordLink && CONFIG.socials.discord) {
+        discordLink.href = CONFIG.socials.discord;
+      } else if (discordLink) {
+        discordLink.style.display = "none";
+      }
+
+      const contactLink = document.getElementById("menu-item-contact");
+      if (contactLink && CONFIG.whatsapp) {
+        contactLink.href = "https://wa.me/" + CONFIG.whatsapp;
+      }
+    }
+  });
+
+  function openPlayer() {
+    window.open('player/index.html', 'musicPlayer', 'width=300,height=350');
+  }
+
+  function openMinesweeper() {
+    window.open('minesweeper/index.html', 'minesweeper', 'width=300,height=390,resizable=no,scrollbars=no');
+  }
+</script>
+</html>

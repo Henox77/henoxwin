@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <style>
+        body {
+            background-color: black;
+        }
+
+        .about-music-list {
+            margin-top: 15px;
+        }
+    </style>
+    <link rel="icon" href="../media/favicon.png">
+    <link rel="preload" href="../media/background-hills-day.gif" as="image">
+    <link rel="preload" href="../media/background-hills-night.gif" as="image">
+    <link rel="stylesheet" href="../default.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Henox - Hakkımda</title>
+    <script src="../scripts/config.js"></script>
+</head>
+
+<body>
+    <div class="blog-post-menu">
+        <div class="menu-content">
+            <div class="blog-column-left menu-left">
+                <h1 class="blog-title">Hakkımda</h1>
+                <p>
+                    Merhaba! İnternet dünyasına hoş geldiniz.<br>
+                    Ben <strong id="about-name">Henox</strong>, bu sitenin webmaster'ıyım.
+                </p>
+                <h2 class="blog-subtitle">Webmaster & Bu Site Hakkında</h2>
+
+                <p>
+                    Kod yazmayı, nostaljik yazılımları, eski işletim sistemlerini ve retro tasarımları çok seviyorum.
+                    Bu web sitesi, 90'ların sonu ve 2000'lerin başındaki o samimi web ortamını yaşatmak için tasarlandı.
+                </p>
+                <p>
+                    Gördüğünüz gibi, doğduğum veya çok küçük olduğum o dönemlerin nostaljisine büyük bir ilgim var!
+                    Sitenin tasarımı tamamen klasik <strong>Windows XP</strong> işletim sisteminden esinlenerek
+                    oluşturuldu.
+                </p>
+                <p>
+                    Umarım sitemde gezinirken keyif alırsınız!
+                </p>
+
+                <h2 class="blog-subtitle">İletişim</h2>
+                <div class="music-list about-music-list">
+                    <ul>
+                        <li>
+                            <span>WhatsApp</span>
+                            <span class="music-list-span-right">
+                                <a id="about-whatsapp" href="https://wa.me/905375628262" target="_blank">+90 537 562 82 62</a>
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="menu-divider"></div>
+            </div>
+
+            <div class="blog-column-right menu-right">
+                <a href="../" class="menu-item">
+                    <img src="../media/home_icon.png" alt="Home Icon" class="menu-icon">
+                    <div class="menu-text">
+                        <span class="menu-short">Giriş</span>
+                        <span class="menu-full">Ana Sayfaya Dön...</span>
+                    </div>
+                </a>
+                <a href="" class="menu-item" id="menu-item-background">
+                    <img src="../media/background_icon.png" alt="Background Icon" class="menu-icon">
+                    <div class="menu-text">
+                        <span class="menu-short">Arka Plan</span>
+                        <span class="menu-full">Duvar Kağıdı Değiştir</span>
+                    </div>
+                </a>
+                <div class="menu-divider"></div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../scripts/icon_handler.js"></script>
+<script src="../scripts/background_changer.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        if (typeof CONFIG !== "undefined") {
+            const nameElem = document.getElementById("about-name");
+            if (nameElem && CONFIG.name) {
+                nameElem.textContent = CONFIG.name;
+                document.title = CONFIG.name + " - Hakkımda";
+            }
+
+
+
+            const whatsappLink = document.getElementById("about-whatsapp");
+            if (whatsappLink && CONFIG.whatsapp) {
+                whatsappLink.href = "https://wa.me/" + CONFIG.whatsapp;
+                whatsappLink.textContent = "+" + CONFIG.whatsapp.slice(0,2) + " " + CONFIG.whatsapp.slice(2,5) + " " + CONFIG.whatsapp.slice(5,8) + " " + CONFIG.whatsapp.slice(8,10) + " " + CONFIG.whatsapp.slice(10,12);
+            }
+        }
+    });
+</script>
+
+</html>

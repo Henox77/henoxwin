@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Winamp Player</title>
+  <style>
+    body {
+        background-color: #D4E5FA;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+  </style>
+  <script src="../scripts/config.js"></script>
+  <script src="https://unpkg.com/webamp@1.5.0/built/webamp.bundle.min.js"></script>
+</head>
+<body>
+  <div id="winamp-container"></div>
+  <script>
+    let tracks = [];
+    if (typeof CONFIG !== "undefined" && CONFIG.tracks) {
+      tracks = JSON.parse(JSON.stringify(CONFIG.tracks));
+    }
+
+    tracks = tracks.map(track => {
+      if (track.url && track.url.startsWith('/media/')) {
+        track.url = '..' + track.url;
+      }
+      return track;
+    });
+
+    let skinUrl = "../media/skins/aero.wsz";
+
+    const webamp = new Webamp({
+      initialTracks: tracks,
+      skin: { url: skinUrl }
+    });
+
+    webamp.renderWhenReady(document.getElementById('winamp-container')).then(() => {
+      webamp.play();
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <style> 
+        body {
+            background-color: black;
+            font-family: Tahoma, sans-serif;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .xp-window {
+            width: 280px;
+            background-color: #ECE9D8;
+            border: 3px solid #0055e0;
+            border-radius: 7px 7px 0 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .title-bar {
+            background: linear-gradient(to bottom, #0058e6 0%, #3a93ff 10%, #0058e6 100%);
+            padding: 5px 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+            text-shadow: 1px 1px 1px #002c80;
+        }
+
+        .title-bar-text {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 12px;
+        }
+
+        .title-bar-controls {
+            display: flex;
+            gap: 2px;
+        }
+
+        .win-btn {
+            width: 21px;
+            height: 21px;
+            border: 1px solid white;
+            border-radius: 3px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+
+        .win-minimize {
+            background: linear-gradient(to bottom, #7da2e1 0%, #3b65a6 100%);
+        }
+
+        .win-maximize {
+            background: linear-gradient(to bottom, #7da2e1 0%, #3b65a6 100%);
+        }
+
+        .win-close {
+            background: linear-gradient(to bottom, #f37c5f 0%, #c63011 100%);
+            font-size: 11px;
+        }
+
+        .win-btn:hover {
+            filter: brightness(1.2);
+        }
+
+        .menu-bar {
+            background-color: #ECE9D8;
+            border-bottom: 1px solid #D2CFBB;
+            padding: 3px 10px;
+            display: flex;
+            gap: 10px;
+            font-size: 11px;
+            color: black;
+        }
+
+        .menu-item-text {
+            cursor: pointer;
+            padding: 1px 5px;
+        }
+
+        .menu-item-text:hover {
+            background-color: #316ac5;
+            color: white;
+        }
+
+        .game-panel {
+            padding: 8px;
+            background-color: #C0C0C0;
+            border: 3px inset #ECE9D8;
+            margin: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            align-items: center;
+        }
+
+        .status-header {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #C0C0C0;
+            border: 2px inset #FFF;
+            padding: 4px 6px;
+            box-sizing: border-box;
+        }
+
+        .led-display {
+            background-color: black;
+            color: #FF0000;
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: bold;
+            font-size: 18px;
+            padding: 2px 6px;
+            border: 1px solid #808080;
+            width: 45px;
+            text-align: right;
+            letter-spacing: 1px;
+        }
+
+        .smiley-face {
+            width: 26px;
+            height: 26px;
+            border: 2px outset #FFF;
+            background-color: #C0C0C0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            cursor: pointer;
+            user-select: none;
+            box-sizing: border-box;
+        }
+
+        .smiley-face:active {
+            border: 2px inset #FFF;
+        }
+
+        .board-grid {
+            border: 3px inset #FFF;
+            background-color: #808080;
+            display: grid;
+            grid-template-columns: repeat(9, 20px);
+            grid-template-rows: repeat(9, 20px);
+            gap: 0;
+        }
+
+        .cell {
+            width: 20px;
+            height: 20px;
+            border: 2px outset #FFF;
+            background-color: #C0C0C0;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .cell.revealed {
+            border: 1px solid #808080;
+            background-color: #C0C0C0;
+        }
+
+        .cell.mine {
+            background-color: red;
+            color: black;
+        }
+
+        .cell.flagged {
+            color: red;
+        }
+
+        .num-1 { color: blue; }
+        .num-2 { color: green; }
+        .num-3 { color: red; }
+        .num-4 { color: darkblue; }
+        .num-5 { color: darkred; }
+        .num-6 { color: teal; }
+        .num-7 { color: black; }
+        .num-8 { color: gray; }
+    </style>
+    <link rel="icon" href="../media/favicon.png">
+    <title>Mayın Tarlası</title>
+</head>
+<body>
+    <div class="xp-window">
+        <div class="title-bar">
+            <div class="title-bar-text">
+                <span style="font-size:14px;">💣</span> Mayın Tarlası
+            </div>
+            <div class="title-bar-controls">
+                <div class="win-btn win-minimize" onclick="closeWindow()">_</div>
+                <div class="win-btn win-maximize">□</div>
+                <div class="win-btn win-close" onclick="closeWindow()">X</div>
+            </div>
+        </div>
+        <div class="menu-bar">
+            <span class="menu-item-text" onclick="resetGame()">Yeni Oyun</span>
+            <span class="menu-item-text" onclick="closeWindow()">Oyundan Çık</span>
+        </div>
+        <div class="game-panel">
+            <div class="status-header">
+                <div class="led-display" id="mine-count">010</div>
+                <div class="smiley-face" id="smiley" onclick="resetGame()">🙂</div>
+                <div class="led-display" id="timer">000</div>
+            </div>
+            <div class="board-grid" id="grid"></div>
+        </div>
+    </div>
+
+    <script>
+        const GRID_SIZE = 9;
+        const MINE_COUNT = 10;
+        
+        let board = [];
+        let revealedCount = 0;
+        let flaggedCount = 0;
+        let gameOver = false;
+        let firstClick = true;
+        let timerVal = 0;
+        let timerInterval = null;
+
+        const gridElement = document.getElementById("grid");
+        const smileyElement = document.getElementById("smiley");
+        const mineCountElement = document.getElementById("mine-count");
+        const timerElement = document.getElementById("timer");
+
+        function closeWindow() {
+            window.close();
+        }
+
+        function initBoard() {
+            board = [];
+            revealedCount = 0;
+            flaggedCount = 0;
+            gameOver = false;
+            firstClick = true;
+            clearInterval(timerInterval);
+            timerVal = 0;
+            timerElement.textContent = "000";
+            mineCountElement.textContent = formatNumber(MINE_COUNT);
+            smileyElement.textContent = "🙂";
+
+            gridElement.innerHTML = "";
+
+            for (let r = 0; r < GRID_SIZE; r++) {
+                board[r] = [];
+                for (let c = 0; c < GRID_SIZE; c++) {
+                    const cell = {
+                        row: r,
+                        col: c,
+                        isMine: false,
+                        isRevealed: false,
+                        isFlagged: false,
+                        neighborMines: 0,
+                        element: null
+                    };
+
+                    const div = document.createElement("div");
+                    div.classList.add("cell");
+                    
+                    div.addEventListener("click", () => handleLeftClick(r, c));
+                    div.addEventListener("contextmenu", (e) => {
+                        e.preventDefault();
+                        handleRightClick(r, c);
+                    });
+                    
+                    div.addEventListener("mousedown", (e) => {
+                        if (e.button === 0 && !gameOver) smileyElement.textContent = "😮";
+                    });
+                    div.addEventListener("mouseup", () => {
+                        if (!gameOver) smileyElement.textContent = "🙂";
+                    });
+
+                    gridElement.appendChild(div);
+                    cell.element = div;
+                    board[r][c] = cell;
+                }
+            }
+        }
+
+        function formatNumber(num) {
+            if (num < 0) return "000";
+            if (num > 999) return "999";
+            return String(num).padStart(3, '0');
+        }
+
+        function startTimer() {
+            timerInterval = setInterval(() => {
+                timerVal++;
+                timerElement.textContent = formatNumber(timerVal);
+            }, 1000);
+        }
+
+        function placeMines(startR, startC) {
+            let placed = 0;
+            while (placed < MINE_COUNT) {
+                const r = Math.floor(Math.random() * GRID_SIZE);
+                const c = Math.floor(Math.random() * GRID_SIZE);
+                
+                if ((r === startR && c === startC) || board[r][c].isMine) continue;
+                
+                board[r][c].isMine = true;
+                placed++;
+            }
+
+            for (let r = 0; r < GRID_SIZE; r++) {
+                for (let c = 0; c < GRID_SIZE; c++) {
+                    if (board[r][c].isMine) continue;
+                    let count = 0;
+                    for (let dr = -1; dr <= 1; dr++) {
+                        for (let dc = -1; dc <= 1; dc++) {
+                            const nr = r + dr;
+                            const nc = c + dc;
+                            if (nr >= 0 && nr < GRID_SIZE && nc >= 0 && nc < GRID_SIZE) {
+                                if (board[nr][nc].isMine) count++;
+                            }
+                        }
+                    }
+                    board[r][c].neighborMines = count;
+                }
+            }
+        }
+
+        function handleLeftClick(r, c) {
+            if (gameOver) return;
+            const cell = board[r][c];
+            if (cell.isRevealed || cell.isFlagged) return;
+
+            if (firstClick) {
+                firstClick = false;
+                placeMines(r, c);
+                startTimer();
+            }
+
+            revealCell(r, c);
+        }
+
+        function handleRightClick(r, c) {
+            if (gameOver || firstClick) return;
+            const cell = board[r][c];
+            if (cell.isRevealed) return;
+
+            cell.isFlagged = !cell.isFlagged;
+            if (cell.isFlagged) {
+                cell.element.classList.add("flagged");
+                cell.element.textContent = "🚩";
+                flaggedCount++;
+            } else {
+                cell.element.classList.remove("flagged");
+                cell.element.textContent = "";
+                flaggedCount--;
+            }
+
+            mineCountElement.textContent = formatNumber(MINE_COUNT - flaggedCount);
+        }
+
+        function revealCell(r, c) {
+            const cell = board[r][c];
+            cell.isRevealed = true;
+            cell.element.classList.add("revealed");
+            revealedCount++;
+
+            if (cell.isMine) {
+                triggerGameOver(false, r, c);
+                return;
+            }
+
+            if (cell.neighborMines > 0) {
+                cell.element.textContent = cell.neighborMines;
+                cell.element.classList.add(`num-${cell.neighborMines}`);
+            } else {
+                for (let dr = -1; dr <= 1; dr++) {
+                    for (let dc = -1; dc <= 1; dc++) {
+                        const nr = r + dr;
+                        const nc = c + dc;
+                        if (nr >= 0 && nr < GRID_SIZE && nc >= 0 && nc < GRID_SIZE) {
+                            if (!board[nr][nc].isRevealed && !board[nr][nc].isFlagged) {
+                                revealCell(nr, nc);
+                            }
+                        }
+                    }
+                }
+            }
+
+            if (revealedCount === GRID_SIZE * GRID_SIZE - MINE_COUNT) {
+                triggerGameOver(true);
+            }
+        }
+
+        function triggerGameOver(won, explodeR = -1, explodeC = -1) {
+            gameOver = true;
+            clearInterval(timerInterval);
+
+            if (won) {
+                smileyElement.textContent = "😎";
+                for (let r = 0; r < GRID_SIZE; r++) {
+                    for (let c = 0; c < GRID_SIZE; c++) {
+                        if (board[r][c].isMine) {
+                            board[r][c].element.textContent = "🚩";
+                            board[r][c].element.classList.add("flagged");
+                        }
+                    }
+                }
+                mineCountElement.textContent = "000";
+            } else {
+                smileyElement.textContent = "😵";
+                for (let r = 0; r < GRID_SIZE; r++) {
+                    for (let c = 0; c < GRID_SIZE; c++) {
+                        if (board[r][c].isMine) {
+                            board[r][c].element.textContent = "💣";
+                            if (r === explodeR && c === explodeC) {
+                                board[r][c].element.classList.add("mine");
+                            } else {
+                                board[r][c].element.style.backgroundColor = "#d0d0d0";
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        function resetGame() {
+            initBoard();
+        }
+
+        initBoard();
+    </script>
+</body>
+</html>
