@@ -109,8 +109,6 @@ Gereksiz tüm klasör ve dosyalar (eski blog yazıları, günlükler, WIP dizinl
 Eğer benimle iletişime geçmek isterseniz, Başlat Menüsü üzerinden veya aşağıdaki kanallardan ulaşabilirsiniz:
 
 - **💬 WhatsApp:** [+90 537 562 82 62](https://wa.me/905375628262)
-- **🐙 GitHub:** [Henox77](https://github.com/Henox77)
-
 ---
 
 <div align="center">
