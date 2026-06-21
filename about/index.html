@@ -37,7 +37,7 @@
                     Bu web sitesi, 90'ların sonu ve 2000'lerin başındaki o samimi web ortamını yaşatmak için tasarlandı.
                 </p>
                 <p>
-                    Gördüğünüz gibi, doğduğum veya çok küçük olduğum o dönemlerin nostaljisine büyük bir ilgim var!
+                    o dönemlerin nostaljisine büyük bir ilgim var!
                     Sitenin tasarımı tamamen klasik <strong>Windows XP</strong> işletim sisteminden esinlenerek
                     oluşturuldu.
                 </p>
@@ -51,7 +51,8 @@
                         <li>
                             <span>WhatsApp</span>
                             <span class="music-list-span-right">
-                                <a id="about-whatsapp" href="https://wa.me/905375628262" target="_blank">+90 537 562 82 62</a>
+                                <a id="about-whatsapp" href="https://wa.me/905375628262" target="_blank">+90 537 562 82
+                                    62</a>
                             </span>
                         </li>
                     </ul>
@@ -96,7 +97,7 @@
             const whatsappLink = document.getElementById("about-whatsapp");
             if (whatsappLink && CONFIG.whatsapp) {
                 whatsappLink.href = "https://wa.me/" + CONFIG.whatsapp;
-                whatsappLink.textContent = "+" + CONFIG.whatsapp.slice(0,2) + " " + CONFIG.whatsapp.slice(2,5) + " " + CONFIG.whatsapp.slice(5,8) + " " + CONFIG.whatsapp.slice(8,10) + " " + CONFIG.whatsapp.slice(10,12);
+                whatsappLink.textContent = "+" + CONFIG.whatsapp.slice(0, 2) + " " + CONFIG.whatsapp.slice(2, 5) + " " + CONFIG.whatsapp.slice(5, 8) + " " + CONFIG.whatsapp.slice(8, 10) + " " + CONFIG.whatsapp.slice(10, 12);
             }
         }
     });
