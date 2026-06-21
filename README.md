@@ -1,77 +1,119 @@
-# 💻 Henox Win - Retro Windows XP Profile Page
+# 💻 Henox Win - Retro Windows XP Personal Profile Page
 
-Windows XP Başlat Menüsü estetiğine ve MSN Messenger canlı Discord durum widget'ına sahip, tamamen kişiselleştirilebilir, premium nostaljik kişisel web sitesi şablonu.
+<div align="center">
+
+![Windows XP Logo](https://img.shields.io/badge/Windows-XP--Style-blue?style=for-the-badge&logo=windows)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES6+-yellow?style=for-the-badge&logo=javascript)
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Discord](https://img.shields.io/badge/Discord-Lanyard%20API-5865F2?style=for-the-badge&logo=discord&logoColor=white)
+
+**Windows XP Başlat Menüsü estetiğine, MSN Messenger canlı Discord durum widget'ına, nostaljik bir Winamp müzik çalarına ve tamamen oynanabilir bir Mayın Tarlası oyununa sahip; modern cihazlarla tam uyumlu, premium retro kişisel web sitesi.**
+
+[🚀 Canlı Önizleme](https://henox77.github.io/henoxwin/) • [🛠️ Özelleştirme](#%EF%B8%8F-özelleştirme-rehberi) • [📂 Dosya Yapısı](#-dosya-yapısı) • [💬 İletişim](#-İletişim)
+
+</div>
 
 ---
 
-## 🚀 Öne Çıkan Özellikler
+## 🎨 Öne Çıkan Özellikler
 
-- 🎨 **Klasik Windows XP Tasarımı**: Gerçekçi Başlat Menüsü görünümü, dikey sütunlu düzen ve gün/gece döngülü dithered retro Bliss arka plan değiştirici.
-- 💬 **MSN Canlı Discord Widget (Lanyard API)**: Discord üzerindeki aktif durumunu (Çevrimiçi, Boşta, Rahatsız Etmeyin, Çevrimdışı) renkli kenarlık olarak profil resmine yansıtır. Canlı olarak ne oynadığını, Spotify'da dinlediğin şarkıyı veya özel durum mesajını MSN Messenger tarzında gösterir.
-- 💣 **Mayın Tarlası (Minesweeper) Pop-up Oyunu**: Tıpkı orijinal Windows XP'deki gibi çalışan, gülen yüz ifadeli, süre ve mayın sayaçlı, ilk tıklama korumalı pop-up oyun penceresi.
-- 🎵 **Winamp Müzik Çalar**: Webamp entegrasyonuyla çalışan, Aero temalı, şarkıları dinamik olarak çalabilen nostaljik oynatıcı.
-- 📱 **Tam Mobil Uyum**: Mobilde sütunların dikey olarak sıralanması, kaydırma desteği ve mobil karşılama konuşma balonu ile telefonlarda kusursuz görünüm.
-- ⚙️ **Tek Noktadan Kontrol (`config.js`)**: Kod düzenlemeye gerek kalmadan tek bir JS dosyasından tüm sosyal medya linklerini (R10, GitHub, Instagram, Discord), e-postanı ve Winamp çalma listeni düzenleme imkanı.
+| Özellik | Açıklama |
+| :--- | :--- |
+| **📺 Windows XP Nostaljisi** | Orijinal Başlat Menüsü düzeni, masaüstü ikonları, dikey pencereler ve gün/gece döngülü (Dithered) Bliss duvar kağıdı değiştirici. |
+| **💬 MSN Canlı Durum** | [Lanyard API](https://github.com/Phineas/lanyard) entegrasyonu ile Discord durumunuzu (Çevrimiçi, Boşta, Rahatsız Etmeyin, Çevrimdışı) profil avatarı etrafında renkli çerçeveyle gösterir. MSN Messenger tarzında ne oynadığınızı veya Spotify'da dinlediğiniz şarkıyı yansıtır. |
+| **🎵 Winamp Müzik Çalar** | [Webamp](https://github.com/captbaritone/webamp) altyapılı, Windows XP gümüş (Aero/Luna) temalı, listedeki 22 nostaljik Türkçe parçayı otomatik/manuel çalabilen müzik oynatıcı. |
+| **💣 XP Mayın Tarlası** | Orijinal XP Mayın Tarlası oyununun tüm kurallarına, gülen yüz tepkilerine, mayın/zaman sayaçlarına ve ilk tıklama korumasına sahip, pop-up pencerede açılan sürümü. |
+| **📱 Gelişmiş Mobil Uyum** | Masaüstünde yan yana duran sütunlar mobilde alt alta dizilir. Taşmaları önleyen duyarlı (responsive) yapısı ve mobil kullanıcılar için özel karşılama balonu mevcuttur. |
+| **⚙️ Merkezi Kontrol** | HTML/CSS kodlarıyla uğraşmadan, tüm sosyal ağlarınızı, e-postanızı, telefonunuzu ve Winamp müzik listenizi tek bir dosyadan ([config.js](scripts/config.js)) yönetin. |
 
 ---
 
-## 🛠️ Kurulum ve Çalıştırma
+## 🚀 Hızlı Kurulum
 
-Proje tamamen statik (HTML/CSS/JS) olarak geliştirilmiştir. Herhangi bir veritabanı veya sunucu kurulumu gerektirmez.
+Proje tamamen **statik** (HTML/CSS/JS) olarak tasarlanmıştır. Herhangi bir sunucu tarafı derleme işlemine veya NodeJS sunucusuna ihtiyaç duymaz.
 
-1. Bu depoyu indirin veya klonlayın:
-   ```bash
-   git clone https://github.com/Henox77/henoxwin.git
-   ```
-2. `index.html` dosyasına çift tıklayarak tarayıcınızda anında çalıştırabilirsiniz.
-3. Veya statik bir web barındırma servisine (GitHub Pages, Vercel, Netlify vb.) klasörü yükleyerek yayına alabilirsiniz.
+### 1. Projeyi Klonlayın
+```bash
+git clone https://github.com/Henox77/henoxwin.git
+cd henoxwin
+```
+
+### 2. Yerel Olarak Çalıştırın
+Herhangi bir kurulum yapmadan doğrudan `index.html` dosyasına çift tıklayarak tarayıcınızda açıp deneyimleyebilirsiniz.
+
+### 3. Yayına Alın (Deployment)
+Klasörü doğrudan GitHub Pages, Netlify, Vercel veya kendi web sunucunuza yükleyerek saniyeler içinde yayına alabilirsiniz.
 
 ---
 
 ## ⚙️ Özelleştirme Rehberi
 
-Tüm profil bilgilerini ve çalma listesini değiştirmek için [scripts/config.js](scripts/config.js) dosyasını favori editörünüzle açıp düzenlemeniz yeterlidir:
+Tüm kişisel bilgileri, sosyal medya linklerini ve çalma listesini değiştirmek için tek yapmanız gereken [scripts/config.js](scripts/config.js) dosyasını düzenlemektir.
 
 ```javascript
 const CONFIG = {
     name: "Henox",
-    email: "xx@gmail.com",
-    whatsapp: "905375628262", // WhatsApp İletişim numaranız
+    email: "xx@gmail.com", // İletişim sayfasında gösterilecek e-posta adresi
+    whatsapp: "905375628262", // WhatsApp Butonu tıklandığında yönlendirilecek numara
     socials: {
-        r10: "https://www.r10.net/profil/...", // R10 profil linkiniz
-        github: "https://github.com/...", // GitHub linkiniz
-        instagram: "https://instagram.com/...", // Instagram linkiniz
-        discord: "https://discord.gg/...", // Discord sunucu davetiniz
-        discordUserId: "1462496241693753558" // Lanyard canlı durumu için Discord ID'niz
+        r10: "https://www.r10.net/profil/...", // R10 profiliniz
+        github: "https://github.com/...", // GitHub profiliniz
+        instagram: "https://instagram.com/...", // Instagram profiliniz
+        discord: "https://discord.gg/...", // Discord sunucu/davet linkiniz
+        discordUserId: "1462496241693753558" // Canlı Discord durumu ve Spotify bilgisi için Discord Karakter Kimliği
     },
-    // Winamp Müzik Çalar listesi
+    // Winamp Müzik Çalar Listesi
     tracks: [
         {
-            metaData: { artist: "Sanatçı", title: "Şarkı Adı" },
-            url: "/media/sounds/sarkilar/Sarki-Dosyasi.mp3",
-            duration: 300
-        }
+            metaData: { artist: "Azer Bülbül", title: "İyi Değilim" },
+            url: "/media/sounds/sarkilar/Azer-Bulbul-Iyi-Degilim.mp3",
+            duration: 270
+        },
+        // Diğer şarkılar...
     ]
 };
 ```
 
+> [!TIP]
+> Canlı Discord durumunuzun düzgün çalışabilmesi için Discord hesabınızın **Lanyard API** ile bağlı olması gerekir. Lanyard sunucusuna katılarak veya durumu herkese açık yaparak profilinizi aktifleştirebilirsiniz.
+
 ---
 
-## 📂 Dosya Yapısı
+## 📂 Temizlenmiş Proje Yapısı
+
+Gereksiz tüm klasör ve dosyalar (eski blog yazıları, günlükler, WIP dizinleri) temizlenmiş, optimize edilmiş dosya yapısı aşağıdaki gibidir:
 
 ```text
-├── about/           # Hakkımda sayfası
-├── media/           # İkonlar, Bliss duvar kağıtları, sesler
-│   ├── skins/       # Winamp dış görünüm teması
-│   └── sounds/      # Mp3 müzik dosyaları klasörü
-├── minesweeper/     # Mayın Tarlası oyunu
-├── player/          # Winamp oynatıcı şablonu
-├── scripts/         # Dinamik JS dosyaları (lanyard, changer, config)
-├── default.css      # Ana stil dosyası
-├── index.html       # Ana giriş sayfası (Başlat Menüsü)
-└── LICENSE          # Lisans bilgileri
+├── about/                # Hakkımda detay sayfası
+├── media/                # Medya varlıkları klasörü
+│   ├── skins/            # Winamp için Aero/Classic skin dosyaları
+│   └── sounds/           # mp3 formatında Türkçe nostalji şarkıları
+│       └── sarkilar/     # Web uyumlu, temiz isimlendirilmiş 22 adet parça
+├── minesweeper/          # Klasik Mayın Tarlası web uygulaması
+├── player/               # Winamp oynatıcı pop-up arayüzü
+├── scripts/              # Dinamik JavaScript dosyaları
+│   ├── background_changer.js  # Bliss Gece/Gündüz duvar kağıdı yönetimi
+│   ├── config.js         # Tüm sistemin merkezi yönetim ve ayar dosyası
+│   ├── lanyard.js        # Canlı Discord Lanyard API bağlantısı
+│   └── notification.js   # Retro XP konuşma balonu bildirimleri
+├── default.css           # Ana XP teması ve responsive düzen CSS'i
+├── index.html            # Ana Başlat Menüsü & profil paneli
+└── README.md             # Bu belge
 ```
 
 ---
 
-*Nostaljinin tadını çıkarın! ☕*
+## 💬 İletişim & Sosyal Medya
+
+Eğer benimle iletişime geçmek isterseniz, Başlat Menüsü üzerinden veya aşağıdaki kanallardan ulaşabilirsiniz:
+
+- **💬 WhatsApp:** [+90 537 562 82 62](https://wa.me/905375628262)
+- **🐙 GitHub:** [Henox77](https://github.com/Henox77)
+
+---
+
+<div align="center">
+    <sub>Bu proje nostalji sevenler için özenle optimize edilmiş ve modernize edilmiştir.</sub><br>
+    <sub>Henox © 2026. Tüm Hakları Saklıdır.</sub>
+</div>
